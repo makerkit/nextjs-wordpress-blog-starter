@@ -1,4 +1,10 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js Wordpress Blog Starter
+
+This is a minimal starter template for a Next.js blog powered by 
+headless Wordpress. 
+
+This project also includes a script to generate posts with ChatGPT 
+and insert them into the Wordpress database using the Wordpress REST API.
 
 ## Getting Started
 
@@ -14,21 +20,33 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Run Docker
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+To run the Wordpress server in a Docker container, run the following command:
+
+```bash
+docker-compose up
+```
+
+You should now see the Wordpress site at [http://localhost:8080](http://localhost:8080).
+
+## Generate Posts
+
+To generate posts with ChatGPT and insert them into the Wordpress database, run the following command:
+
+```bash
+npm run generate -- "Your post title"
+```
+
+Assuming you have a Wordpress server running at [http://localhost:8080]
+(http://localhost:8080), you should now see the post at 
+[http://localhost:8080/your-post-title]
+(http://localhost:8080/your-post-title). ChatGPT will generate a post with 
+the provided title and insert it into the database.
+
+To tweak the prompt, update the `lib/generate-post.ts` file with your 
+desired prompt.
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+To learn more about this setup, read the blog post [Building an AI-powered Blog with Next.js and WordPress](https://makerkit.dev/blog/tutorials/nextjs-wordpress-blog).
